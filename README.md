@@ -1,5 +1,5 @@
 # Beam
-微服务框架RPC框架
+微服务RPC框架
 # 概述
 Beam是一套高性能、易于使用的分布式远程服务调用(RPC)框架。
 
@@ -16,10 +16,10 @@ Beam是一套高性能、易于使用的分布式远程服务调用(RPC)框架�
 
 > 如果要执行快速入门介绍中的例子，你需要:
 >  * JDK 1.8或更高版本。
->  * java依赖管理工具，如[Maven][maven]。
+>  * java依赖管理工具，如[maven]。
 
 
-## <a id="peer-to-peer"></a>简单调用示例
+## 简单调用示例
 
 1. 编写protobuf接口调用的契约IDL
 
@@ -43,12 +43,19 @@ Beam是一套高性能、易于使用的分布式远程服务调用(RPC)框架�
     ```
     命名为helloworld.proto
 
-2. 通过beam-codegen-cli生成maven工程
-    
-    ```cmd
-    java -jar beam-codegen-VERSION.jar -i ./test -o ./test-generated
+2. 新建maven工程
+    新建一个名称为beam-demo-api的maven工程，将helloworld.proto拷贝到src/main/proto目录下，在pom中加入依赖：
+    ```xml
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yzl.framework</groupId>
+            <artifactId>beam-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     ```
-    将上一步编辑好的helloworld.proto拷贝到./test目录下，执行命令生成一个maven工程，该maven工程包含./test目录下所有的proto文件
 
 3. 分别在服务端和客户端的spring boot maven工程中添加依赖
     ```xml
