@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>{{groupId}}</groupId>
+    <artifactId>{{artifactId}}</artifactId>
+    <packaging>jar</packaging>
+    <version>{{artifactVersion}}</version>
+
+    <dependencies>
+        <!--These two below are ESSENTIAL for Beam to work. DO NOT DELETE!-->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yzl.framework</groupId>
+            <artifactId>beam-core</artifactId>
+            <version>{{beamVersion}}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--Beam codegen-maven-plugin.-->
+            <plugin>
+                <groupId>com.yzl.framework</groupId>
+                <artifactId>beam-codegen-maven</artifactId>
+                <version>{{beamVersion}}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>proto2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <!--Include all protofiles while packaging.-->
+        <resources>
+            <resource>
+                <directory>src/main/proto</directory>
+                <includes>
+                    <include>**/*.proto</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

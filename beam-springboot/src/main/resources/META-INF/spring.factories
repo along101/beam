@@ -1,0 +1,6 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yzl.framework.beam.spring.autoconfig.BeamRegistryAutoConfiguration,\
+com.yzl.framework.beam.spring.autoconfig.BeamServiceAutoConfiguration,\
+com.yzl.framework.beam.spring.autoconfig.BeamClientAutoConfiguration,\
+com.yzl.framework.beam.spring.autoconfig.BeamProtocolAutoConfiguration
